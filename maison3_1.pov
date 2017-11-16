@@ -141,6 +141,7 @@ intersection{	// le sol de la maison
       
 }
 //#declare H=<1.5,3.48>;
+//Le tuyau de la cheminée!!!
 lathe{ //IHGD
             linear_spline
            2,
@@ -154,6 +155,18 @@ lathe{ //IHGD
             
             pigment{color White}
  }
+ lathe{ 
+            bezier_spline
+           4,
+            <1,6>,
+             <0.8,4.9>,
+            <0.7,4>,
+            <0.8,3.2> 
+            //rotate <90,0,0>
+           // translate <5.87,-6.5,6>
+            
+            pigment{color White}
+}
      
 
 
