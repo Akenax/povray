@@ -39,7 +39,7 @@ plane{
 }
 
 
-difference{
+difference{	//permet de creuser la maison
       union{
             blob{
                   threshold 0.2
@@ -73,7 +73,7 @@ difference{
             
             
       }
-      union{
+      union{	// creux dans la maison
              blob{
                   threshold 0.2
                   sphere{
@@ -101,14 +101,14 @@ difference{
                         pigment{color Brown}
                   }
             }
-      sphere{
+      sphere{	//la petite fenêtre
             <2.4,-6.5,3>
             2
             pigment{color Red}
       }
     
 }
-intersection{
+intersection{	// le sol de la maison
       box{  //GJKL
             <2,-2,1>
             <10.6,-11,2>
@@ -155,49 +155,9 @@ lathe{ //IHGD
             pigment{color White}
  }
      
-/*lathe{ //HJLK
-            bezier_spline
-            4,
-             
-            H,
-            <3.28,1>,
-             <0.06,1>,
-             <2.4,1>
-            /*rotate <90,0,0>
-            translate <5.87,-6.5,6>
-            */
-       //     pigment{color Red}
-                      
-      //}  
-      lathe{ //HJLK
-            bezier_spline
-            4,
-             
-            <1.5,3.48>,
-            <3.28,1>,
-             <0.06,1>,
-             <2.4,1>
-            /*rotate <90,0,0>
-            translate <5.87,-6.5,6>
-            */
-            pigment{color Red}
-                      
-      }   
-            /*lathe{ //FGHD
-                  bezier_spline
-                  4,
-                  <-1.92,1.44>,
-                  <-0.95,2.73>,
-                  <-0.73,2.84>,
-                  <0.2*2.84,2.84*0.2> 
-                 // rotate <90,0,0>
-                  //translate <5.87,-6.5,6>
-                  
-                  pigment{color White}
-                            
-            }*/
 
-blob{
+
+blob{	//la fumée au-dessus de la maison
       threshold 0.05
       #for (i,0,3)
             sphere{
