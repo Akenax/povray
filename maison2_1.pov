@@ -70,7 +70,7 @@ difference{
                   */
             }
             
-            lathe{
+            lathe{	//permet de relier la sphere et le cylindre de manière joli
                   bezier_spline
                   4,
                   <2.79,1.09>,
