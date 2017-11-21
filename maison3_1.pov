@@ -24,11 +24,17 @@ light_source{
 }
 
 camera{
-	location<-10,-10,20>
-	look_at<0,0,0>
+	location<-5,-3,15>
+	look_at<5.87,-6.5,3>
 	sky <0,0,1>
 	right<-image_width/image_height,0,0>
 }
+/*camera{
+	location<1,10,3>
+	look_at<0,0,0>
+	sky <0,0,1>
+	right<-image_width/image_height,0,0>
+}*/
 
 background { White}
 
@@ -39,8 +45,8 @@ plane{
 }
 
 
-difference{	//permet de creuser la maison
-      union{
+difference{
+      //union{
             blob{
                   threshold 0.2
                   sphere{
@@ -61,19 +67,21 @@ difference{	//permet de creuser la maison
                         1
                         pigment{color White}
                   }
-                  sphere{
-                        <5.87,-6.5,6>
-                        3
-                        2
-                        pigment{color White}
-                  }
-            
+         
+                  
+	            sphere{
+	                  <5.87,-6.5,6>
+	                  3
+	                  2
+	                  pigment{color White}
+	            }
+		            
             }
             
             
             
-      }
-      union{	// creux dans la maison
+      //}
+      union{
              blob{
                   threshold 0.2
                   sphere{
@@ -101,14 +109,22 @@ difference{	//permet de creuser la maison
                         pigment{color Brown}
                   }
             }
-      sphere{	//la petite fenêtre
-            <2.4,-6.5,3>
-            2
-            pigment{color Red}
-      }
+		  sphere{
+				<2.4,-6.5,3>
+				2
+				pigment{color Red}
+			}
     
+		}
+		sphere{	//afin de faire passer la fumÃ©e dans le toit
+		//centre N rayon M
+			<0,0,0>
+			1
+			
+			translate <5.87,-6.5,6+3*0.7>
+		}
 }
-intersection{	// le sol de la maison
+intersection{
       box{  //GJKL
             <2,-2,1>
             <10.6,-11,2>
@@ -146,18 +162,40 @@ lathe{ //IHGD
            2,
             
              <2.31,0.66>,
-            <1.5,3.48>
-            /*<1.08,5.33>,
-            <0.2*1,0.2*6> 
-            rotate <90,0,0>*/
-           // translate <5.87,-6.5,6>
+            <1,6>
+            //<1.08,5.33>,
+            //<0.2*1,0.2*6> 
+            rotate <90,0,0>
+            translate <5.87,-6.5,6>
             
             pigment{color White}
- }
-     
+}
+lathe{ //DJLK
+            bezier_spline
+           4,
+            <1,6>,
+             <1,3.28>,
+            <1,2.4>,
+            <1,0.06> 
+            rotate <90,0,0>
+           translate <5.87,-6.5,6>
+            //translate <0,1,0>
+            //translate <5.87,-3,6>
+            pigment{color White}
+}
 
 
-blob{	//la fumée au-dessus de la maison
+/*cylinder{
+	<1,6>
+	<1,0>
+	1
+	translate <5.87,-6.5,6>
+	
+}*/
+
+
+
+blob{
       threshold 0.05
       #for (i,0,3)
             sphere{
