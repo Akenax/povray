@@ -104,7 +104,7 @@ blob{
 intersection{
       		torus{
       			1.25
-      			0.05+0.03         //cr�tin
+      			0.05+0.03         //crétin
       			rotate<90,0,0>
       			translate<-0.45+0.3,1,2.5+0.2>
       			pigment {color Black}
@@ -140,7 +140,7 @@ intersection{
             //rotate rotation
             translate <0,1.6,2.36>
       }*/
-      lathe{      //QONP --> coord. invers�es
+      lathe{      //QONP --> coord. inversées
             bezier_spline
             4,
             //<0.1,0.9>,
@@ -153,7 +153,7 @@ intersection{
             translate <0,1,2.36>
             
       }
-      lathe{      //Q'O'N'P' --> coord. invers�es
+      lathe{      //Q'O'N'P' --> coord. inversées
             bezier_spline
             4,
             <0.1,-1.5>,
@@ -184,7 +184,7 @@ intersection{
 	      pigment { color Pink }
 	     
 	      scale <0.5,0.5,1>
-	      rotate <-30+30,0,0>     //cr�tin
+	      rotate <-30+30,0,0>     //crétin
 	     // rotate rotation
 	      translate <0,2.75-0.25,2.53>
 	      
@@ -239,7 +239,7 @@ intersection{
 	      pigment { color Pink }
 	     
 	      scale <0.5,0.5,1>
-	      rotate <30-30,0,0>      //cr�tin
+	      rotate <30-30,0,0>      //crétin
 	   //   rotate rotation
 	      translate  <0,-0.75+0.25,2.56>
 	      
@@ -286,7 +286,7 @@ intersection{
 
 bras(<20,0,0>)
 
-#macro lapin(xYeux,DecaleYeux,zYeux)	//les yeux sont décaler de chaque côté de DecaleYeux*Y
+#macro lapin(xYeux,DecaleYeux,zYeux)	//les yeux sont dÃ©caler de chaque cÃ´tÃ© de DecaleYeux*Y
 						//xYeux=profondeur des yeux
 
       	sphere{     //gauche
@@ -295,7 +295,7 @@ bras(<20,0,0>)
       		 0.2
       		// scale <1,0.7,1.25>
       		//scale <0.7,0.7,0.7>
-      		// translate<-0.05,0.3,-0.7>	//translation dû au scale (pour y)
+      		// translate<-0.05,0.3,-0.7>	//translation dÃ» au scale (pour y)
       		translate <1.25*0.7+xYeux,1-DecaleYeux,3+zYeux>
       		 pigment{ color White}
       	}
@@ -313,7 +313,7 @@ bras(<20,0,0>)
       			<0,0,0>
       			 0.2
       			// scale <1,0.7,1.25>
-      			 //translate<0,0.3,-0.7>	//translation dû au scale (pour y)
+      			 //translate<0,0.3,-0.7>	//translation dÃ» au scale (pour y)
       			 translate <1.25*0.7+xYeux,1+DecaleYeux,3+zYeux>
       			 pigment{ color White}
       	}
@@ -351,17 +351,22 @@ difference{
             <0.27,0.61>,      //C
             <0.26,0.4>,      //H
             <0.23,0.2>,      //I
-            <0.18,-0.05>      //B
-            pigment{color Brown}
-            scale <5,1,1>
-            rotate <75,0,0>
-            translate <0,1+0.21,3+0.65>
+            <0.18,-0.05>     //B
+            pigment{color White}
+            scale <1,1.5,1>
+           rotate <65,0,0>
+           //rotate <75,0,0>
+            translate <0,1+0.30,3+0.45>
+            //translate <2,1,1>
       }
-      box{
+        
+     box{
             <0,0,0>
-            <0.24,2*0.24,0.87-0.02>
-            translate <0,1+0.26-0.24+0.12,3+0.92-0.24>
-            pigment{color Brown}
+            <0.24,2*0.27+0.5,2*0.89>
+             scale <1,1.5,1>
+            rotate<65,0,0>
+            translate <0.2,1+0.7,3+0.4*1.5>
+            pigment{color Pink}
       }
 }
 
