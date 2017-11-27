@@ -29,7 +29,7 @@ camera{   //en face du barbapapa
 	right<-image_width/image_height,0,0>
 }
 
-/*camera{         //sur le c�t�
+/*camera{         //sur le côté
 	location<1,-3,3>
 	look_at<0,1,2>
 	sky <0,0,1>
@@ -105,7 +105,7 @@ intersection{
             //rotate rotation
             translate <0,1.6,2.36>
       }*/
-      lathe{      //QONP --> coord. invers�es
+      lathe{      //QONP --> coord. inversées
             bezier_spline
             4,
             //<0.1,0.9>,
@@ -118,7 +118,7 @@ intersection{
             translate <0,1,2.36>
             
       }
-      lathe{      //Q'O'N'P' --> coord. invers�es
+      lathe{      //Q'O'N'P' --> coord. inversées
             bezier_spline
             4,
             <0.1,-1.5>,
@@ -251,7 +251,7 @@ intersection{
 
 bras(<20,0,0>)
 
-#macro lapin(xYeux,DecaleYeux)	//les yeux sont décaler de chaque côté de DecaleYeux*Y
+#macro lapin(xYeux,DecaleYeux)	//les yeux sont dÃ©caler de chaque cÃ´tÃ© de DecaleYeux*Y
 						//xYeux=profondeur des yeux
 
       	sphere{
@@ -259,7 +259,7 @@ bras(<20,0,0>)
                    <0,0,0>
       		 0.2
       		 scale <1,0.7,1.25>
-      		// translate<-0.05,0.3,-0.7>	//translation dû au scale (pour y)
+      		// translate<-0.05,0.3,-0.7>	//translation dÃ» au scale (pour y)
       		translate <1.25*0.7+xYeux,1-DecaleYeux,3>
       		 pigment{ color White}
       	}
@@ -277,7 +277,7 @@ bras(<20,0,0>)
       			<0,0,0>
       			 0.2
       			 scale <1,0.7,1.25>
-      			 //translate<0,0.3,-0.7>	//translation dû au scale (pour y)
+      			 //translate<0,0.3,-0.7>	//translation dÃ» au scale (pour y)
       			 translate <1.25*0.7+xYeux,1+DecaleYeux,3>
       			 pigment{ color White}
       	}
