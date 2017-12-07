@@ -4,7 +4,7 @@
 #declare Font="cyrvetic.ttf";
 
 #declare tps=clock;
-//#declare tps=1;
+//#declare tps=0.99;
 
 light_source{
 	<4,4,4>
@@ -65,6 +65,8 @@ blob{
 		 translate <0,1,3>
 	}
 }
+
+//bouche barbe
 /*intersection{
       		torus{
       			1.25
@@ -80,6 +82,86 @@ blob{
             		 translate <0.07,0,0>
             	}
 }*/
+
+//bouche cr閠in
+union{
+      intersection{	//bouche et visage afin qu'ils ne se percutent pas.
+            difference{	//pour faire la bonne forme
+                  box{  //CDEF
+                        <0,0,0>
+                        <1.25*0.8,1.2,-0.6> //distance entre F et D
+                        pigment{ color Brown}
+                        //scale<0+tps,0+tps,0+tps>
+                        translate <0,0.4,3+0.6-0.6*tps>   //coordonn閑s de F
+                  }
+                  sphere{
+                        <0,0,0>
+                        0.6
+                        scale <1,1,0.30>
+                        translate<1.25*0.8,1,3> //A
+                  }
+                   sphere{
+                        <0,0,0>
+                        0.6
+                        scale <1,1,0.30>
+                        translate<0.55,1,2.4>     //H
+                  }
+                  box{	// pour l'animation, pour faire descendre la bouche sans que cela se voit
+                  		<-0.2,-0.2,01>
+                        <1.26*0.8,1.3,-0.7> //distance entre F et D
+                        pigment{ color Pink}
+                        //scale<0+tps,0+tps,0+tps>
+                        translate <0,0.4,3+0.6>   //coordonn閑s de F
+                        
+                  }
+            }
+            sphere{
+            		<0,0,0>
+            		 1.25*0.8
+            		 pigment{ color Black}
+            		 scale <1,0+0.9,1>
+            		 translate <0,1,3>
+      	}
+      	
+      }
+      intersection{	//pour pas que les dents d閜assent: bouche et dents
+            union{	//les dents
+                  box{
+                        <0,0,0>
+                        <0.1,0.2,0.2>
+                        pigment{ color White}
+                        translate <1.25*0.8,0.9-0.2,2.9-0.2*tps>
+                  }
+                  box{
+                        <0,0,0>
+                        <0.1,0.2,0.2>
+                        pigment{ color White}
+                        translate <1.25*0.8,0.9+0.2,2.9-0.2*tps>
+                  }
+            }
+            difference{		//bouche pour intersection avec les dents
+                  box{  //CDEF
+                        <0,0,0>
+                        <1.25*0.8,1.2,-0.6> //distance entre F et D
+                        pigment{ color White}
+                        translate <0,0.4,3>   //coordonn閑s de F
+                  }
+                  sphere{
+                        <0,0,0>
+                        0.6
+                        scale <1,1,0.30>
+                        translate<1.25*0.8,1,3> //A
+                  }
+                   sphere{
+                        <0,0,0>
+                        0.6
+                        scale <1,1,0.30>
+                        translate<0.55,1,2.4>     //H
+                  }
+            }
+       }
+      
+}
 
 #macro bras(rotation,cote)     //rotation des bras autour d'un point
       lathe{      //QONP --> coord. invers閑s
@@ -228,16 +310,16 @@ blob{
 
 bras(<20,0,0>,0.55)
 
-#macro lapin(xYeux,DecaleYeux)	//les yeux sont d茅caler de chaque c么t茅 de DecaleYeux*Y
+#macro Yeux(xYeux,DecaleYeux,zYeux)	//les yeux sont d茅caler de chaque c么t茅 de DecaleYeux*Y
 						//xYeux=profondeur des yeux
 
       	sphere{
       		
                    <0,0,0>
       		 0.2
-      		 scale <1,0.7,1.25>
+      		 scale <1,0.7+0.3*tps,1.25-0.25*tps>
       		// translate<-0.05,0.3,-0.7>	//translation d没 au scale (pour y)
-      		translate <1.25*0.7+xYeux,1-DecaleYeux,3>
+      		translate <1.25*0.7+xYeux,1-DecaleYeux,3+zYeux>
       		 pigment{ color White}
       	}
       	sphere{
@@ -246,16 +328,16 @@ bras(<20,0,0>,0.55)
       		 //scale <1,0.7,1.25>
       		 //translate<-0.05,0,0>
       		 
-      		translate <1.25*0.7+xYeux+0.2,0.95-DecaleYeux+0.05,3>
+      		translate <1.25*0.7+xYeux+0.2,0.95-DecaleYeux+0.05,3+zYeux>
       		 pigment{ color Black}
       	}
       
       	sphere{
       			<0,0,0>
       			 0.2
-      			 scale <1,0.7,1.25>
+      			 scale <1,0.7+0.3*tps,1.25-0.25*tps>
       			 //translate<0,0.3,-0.7>	//translation d没 au scale (pour y)
-      			 translate <1.25*0.7+xYeux,1+DecaleYeux,3>
+      			 translate <1.25*0.7+xYeux,1+DecaleYeux,3+zYeux>
       			 pigment{ color White}
       	}
       	sphere{
@@ -263,7 +345,7 @@ bras(<20,0,0>,0.55)
       		 0.05
       		
       		 //scale <1,0.7,1.25>
-      		 translate<1.25*0.7+xYeux+0.2,0.95+DecaleYeux+0.05,3>
+      		 translate<1.25*0.7+xYeux+0.2,0.95+DecaleYeux+0.05,3+zYeux>
       	
       		 pigment{ color Black}
       	}
@@ -272,7 +354,7 @@ bras(<20,0,0>,0.55)
 
       
 #end
-lapin(-0.1,0.25)
+Yeux(-0.1+0.04*tps,0.25+0.25*tps,0.1*tps)
 
 
 //Oreilles
@@ -336,7 +418,68 @@ difference{
 }
 
 
-
+#macro jambes(rot,hauteur)
+	#if(tps<=0.33)		//D'abord les pieds descendent, ensuite ils tournent
+		lathe{      //FGHB --> INVERSE
+		      bezier_spline
+		      4,
+		      <0.6,0.59>,
+		      <0.45,0.74>,
+		      <0.34,0.9>,
+		      <0.29,1.02>
+		      pigment{color Pink}
+		      scale<1,1,0.9>
+		      rotate <270,0,0>
+		      //translate<0,0.03,0.05>  //D-F
+		     // translate<0,1,1.6>
+		      translate<0,1.02,2-0.4*tps*3>
+		}
+		lathe{      //FGHB --> INVERSE
+		      bezier_spline
+		      4,
+		      <0.6,0.59>,
+		      <0.45,0.74>,
+		      <0.34,0.9>,
+		      <0.29,1.02>
+		      pigment{color Pink}
+		      scale<1,1,0.9>
+		      rotate <270,0,0>
+		      //translate<0,0.03,0.05>  //D-F
+		      //translate <0,1,1.6>
+		      translate<0,0.99,2-0.4*tps*3>
+		 }
+	#else
+		lathe{      //FGHB --> INVERSE
+		      bezier_spline
+		      4,
+		      <0.6,0.59>,
+		      <0.45,0.74>,
+		      <0.34,0.9>,
+		      <0.29,1.02>
+		      pigment{color Pink}
+		      scale<1,1,0.9>
+		      rotate <270-rot,0,0>
+		      //translate<0,0.03,0.05>  //D-F
+		     // translate<0,1,1.6>
+		      translate<0,1.02,2-0.4>
+		}
+		lathe{      //FGHB --> INVERSE
+		      bezier_spline
+		      4,
+		      <0.6,0.59>,
+		      <0.45,0.74>,
+		      <0.34,0.9>,
+		      <0.29,1.02>
+		      pigment{color Pink}
+		      scale<1,1,0.9>
+		      rotate <270+rot,0,0>
+		      //translate<0,0.03,0.05>  //D-F
+		      //translate <0,1,1.6>
+		      translate<0,0.99,2-0.4>
+		 }
+	#end
+#end
+jambes(35*tps,0.4)
 
 
 #macro fleche(A,S,Coul1,Coul2,alph,rCyl,rCon,text1,sca,rot,trans)
