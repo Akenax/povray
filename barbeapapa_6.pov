@@ -66,8 +66,8 @@ blob{
 	}
 }
 
-//bouche barbe
-/*intersection{
+//bouche barbapapa
+intersection{
       		torus{
       			1.25
       			0.05
@@ -79,11 +79,11 @@ blob{
             		<0.3,1,3>
             		 0.7
             		 pigment{ color Pink}
-            		 translate <0.07,0,0>
+            		 translate <0.07,0,0+0.5*tps>
             	}
-}*/
+}
 
-//bouche crétin
+//bouche lapin crétin
 union{
       intersection{	//bouche et visage afin qu'ils ne se percutent pas.
             difference{	//pour faire la bonne forme
